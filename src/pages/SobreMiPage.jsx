@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "../hooks/useTheme";
 import fondoDark from "../assets/img/fondodark2.png";
-import fondoLigth from "../assets/img/fondoClaro2.png";
+import fondoLight from "../assets/img/fondoClaro2.png";
 
 export function SobreMiPage() {
   const [bounce, setBounce] = useState(false);
@@ -41,7 +41,7 @@ export function SobreMiPage() {
             : "border-[#AEC289] shadow-[0_0_8px_#AEC289] hover:border-[#CD4662]"}`}
         >
           <img
-            src={isDark ? fondoDark : fondoLigth}
+            src={isDark ? fondoDark : fondoLight}
             alt="Sobre mí"
             className="w-full h-full object-cover"
           />
@@ -52,7 +52,9 @@ export function SobreMiPage() {
           className={`flex-1 max-w-xl text-center lg:text-left space-y-4 transition-colors duration-500
           ${isDark ? "text-gray-300" : "text-[#5A3E36]"}`}
         >
-          <p className="text-lg font-semibold">¡Hola! Soy Georgina, me puedes llamar Gina.</p>
+          <p className="text-lg font-semibold">
+            ¡Hola! Soy Georgina, nací en 2001 en Iguazú, Misiones.
+          </p>
 
           <p className="text-lg leading-relaxed">
             Soy{" "}
@@ -60,15 +62,19 @@ export function SobreMiPage() {
               className={`font-bold tracking-wide inline-block transition-all duration-500
               ${isDark ? "glitch text-[#97E3FE]" : "text-[#CD4662] font-serif italic drop-shadow-sm"}`}
             >
-              Técnico Superior en Análisis de Sistemas
-            </span>{" "}
-            y me gusta el{" "}
+              Técnica Superior en Análisis de Sistemas
+            </span>
+            , y me apasiona el{" "}
             <span
               className={`font-bold tracking-wide inline-block transition-all duration-500
               ${isDark ? "glitch text-[#97E3FE]" : "text-[#CD4662] font-serif italic drop-shadow-sm"}`}
             >
-              Desarrollo web
+              desarrollo web
             </span>
+            . Creo que el desarrollo puede ser una forma divertida y creativa
+            de unir lógica, análisis y experimentación.  
+            Me gusta explorar nuevas formas de construir y entender sistemas
+            a través de la práctica.
           </p>
         </div>
       </div>
