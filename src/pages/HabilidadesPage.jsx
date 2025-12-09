@@ -94,7 +94,7 @@ export function HabilidadesPage() {
           }`}
       >
         Muchas de mis prácticas y proyectos se pueden encontrar en <strong>GitHub</strong>
-        (aunque no todos, ¡pero lo iré haciendo!).
+        .
       </p>
 
       {/* Grid de habilidades */}
