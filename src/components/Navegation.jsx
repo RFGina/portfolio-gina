@@ -1,242 +1,203 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaSun, FaMoon, FaBars, FaTimes, FaEnvelope } from "react-icons/fa"; 
+import { FaGithub, FaLinkedin, FaBars, FaTimes, FaEnvelope } from "react-icons/fa";
 import { useTheme } from "../hooks/useTheme";
 
 export function Navegation() {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Función para desplazarse a una sección
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMenuOpen(false);
+    }
+  };
+
+  const isDark = theme === 'dark';
+
   return (
-    <nav className="relative">
-      <div className={`flex justify-between items-center py-4 px-4 md:py-5 md:px-8 transition-all duration-500 ${
-        theme === 'dark' 
-          ? 'bg-black border-b border-[#9A53D0] shadow-[0_0_15px_#9A53D080]' 
-          : 'bg-[#F4F2EF] border-b border-[#F4DBDB] shadow-sm'
-      }`}>
-        
-        {/* Logo */}
-        <Link to="/" className="z-20">
-          <h1 className={`font-sweet transition-all duration-500 transform hover:scale-105 ${
-            theme === 'dark' 
-              ? 'text-3xl md:text-4xl text-[#F394F8] drop-shadow-[0_0_10px_#F394F8]' 
-              : 'text-3xl md:text-5xl text-[#CD4662]'
-          }`}>
-            Gina
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className={`flex justify-between items-center py-3 px-4 md:py-4 md:px-6 transition-colors duration-300 ${isDark
+        ? 'bg-[#121212] border-b border-gray-800'
+        : 'bg-[#f5f1eb] border-b border-[#d4c9b8]'
+        }`}>
+
+        {/* Logo y Título */}
+        <button
+          onClick={() => scrollToSection('about')}
+          className="flex items-center gap-2 z-20 hover:opacity-80 transition-opacity"
+        >
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isDark ? 'bg-gray-800' : 'bg-[#d4c9b8]'
+            }`}>
+            <span className={`font-mono text-sm ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+              }`}>G</span>
+          </div>
+          <h1 className={`font-mono text-lg tracking-tight ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+            }`}>
+            Georgina Rotela
           </h1>
-        </Link>
+        </button>
 
         {/* Botón de menú móvil */}
-        <button 
-          className="md:hidden z-20 p-2 rounded-lg transition-colors"
+        <button
+          className="md:hidden z-20 p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir menú"
         >
-          {menuOpen ? 
-            <FaTimes className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-[#CD4662]'}`} /> : 
-            <FaBars className={`text-xl ${theme === 'dark' ? 'text-white' : 'text-[#CD4662]'}`} />
-          }
+          {menuOpen ? (
+            <FaTimes className={`text-xl ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+              }`} />
+          ) : (
+            <FaBars className={`text-xl ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+              }`} />
+          )}
         </button>
 
         {/* Menú para desktop */}
-        <div className="hidden md:flex gap-5 items-center">
-          <DesktopLinks theme={theme} />
-          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+        <div className="hidden md:flex gap-4 items-center">
+          <button
+            onClick={() => scrollToSection('about')}
+            className={`px-4 py-2 text-sm font-mono transition-all duration-300 ${isDark
+              ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+              : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+              }`}
+          >
+            /sobre_mi
+          </button>
+
+          <button
+            onClick={() => scrollToSection('skills')}
+            className={`px-4 py-2 text-sm font-mono transition-all duration-300 ${isDark
+              ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+              : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+              }`}
+          >
+            /tecnologias
+          </button>
+
+          <button
+            onClick={() => scrollToSection('projects')}
+            className={`px-4 py-2 text-sm font-mono transition-all duration-300 ${isDark
+              ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+              : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+              }`}
+          >
+            /proyectos
+          </button>
+
+          <div className="flex items-center gap-3 ml-4">
+            <a href="https://github.com/RFGina" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-2 ${isDark
+              ? 'text-gray-400 hover:text-gray-200'
+              : 'text-[#a0907a] hover:text-[#8b7355]'
+              }`}>
+              <FaGithub className="text-lg" />
+            </a>
+            <a href="https://linkedin.com/in/georgina-rotela" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-2 ${isDark
+              ? 'text-gray-400 hover:text-gray-200'
+              : 'text-[#a0907a] hover:text-[#8b7355]'
+              }`}>
+              <FaLinkedin className="text-lg" />
+            </a>
+            <a
+              href="mailto:georginarotela40@gmail.com"
+              className={`transition-all duration-300 p-2 ${isDark
+                ? 'text-gray-400 hover:text-gray-200'
+                : 'text-[#a0907a] hover:text-[#8b7355]'
+                }`}
+            >
+              <FaEnvelope className="text-lg" />
+            </a>
+          </div>
+
+          {/* Toggle de tema */}
+          <button
+            onClick={toggleTheme}
+            className={`ml-4 p-2 rounded-full transition-all duration-300 ${isDark
+              ? 'text-gray-300 bg-gray-800 hover:bg-gray-700'
+              : 'text-[#8b7355] bg-[#e8dfd3] hover:bg-[#d4c9b8]'
+              }`}
+            aria-label="Cambiar tema"
+          >
+            {isDark ? 'Y' : 'X'}
+          </button>
         </div>
 
         {/* Menú móvil */}
-        <div className={`fixed md:hidden top-16 right-0 w-64 h-[calc(100%-4rem)] z-50 transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
-        } ${theme === 'dark' ? 'bg-black bg-opacity-95' : 'bg-white bg-opacity-95'}`}>
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <MobileLinks theme={theme} setMenuOpen={setMenuOpen} />
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+        <div className={`fixed md:hidden top-16 inset-x-0 z-40 transform transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
+          } ${isDark
+            ? 'bg-[#121212] border-b border-gray-800'
+            : 'bg-[#f5f1eb] border-b border-[#d4c9b8]'
+          }`}>
+          <div className="flex flex-col p-4 space-y-4">
+            <button
+              onClick={() => scrollToSection('about')}
+              className={`py-3 text-left font-mono transition-all duration-300 ${isDark
+                ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+                }`}
+            >
+              /sobre_mi
+            </button>
+
+            <button
+              onClick={() => scrollToSection('skills')}
+              className={`py-3 text-left font-mono transition-all duration-300 ${isDark
+                ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+                }`}
+            >
+              /tecnologias
+            </button>
+
+            <button
+              onClick={() => scrollToSection('projects')}
+              className={`py-3 text-left font-mono transition-all duration-300 ${isDark
+                ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                : 'text-[#a0907a] hover:text-[#8b7355] hover:bg-[#e8dfd3]'
+                }`}
+            >
+              /proyectos
+            </button>
+
+            <div className="flex justify-center gap-6 py-4">
+              <a href="https://github.com/RFGina" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-3 ${isDark
+                ? 'text-gray-400 hover:text-gray-200'
+                : 'text-[#a0907a] hover:text-[#8b7355]'
+                }`}>
+                <FaGithub className="text-xl" />
+              </a>
+              <a href="https://linkedin.com/in/georgina-rotela" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-3 ${isDark
+                ? 'text-gray-400 hover:text-gray-200'
+                : 'text-[#a0907a] hover:text-[#8b7355]'
+                }`}>
+                <FaLinkedin className="text-xl" />
+              </a>
+              <a
+                href="mailto:georginarotela40@gmail.com"
+                className={`transition-all duration-300 p-3 ${isDark
+                  ? 'text-gray-400 hover:text-gray-200'
+                  : 'text-[#a0907a] hover:text-[#8b7355]'
+                  }`}
+              >
+                <FaEnvelope className="text-xl" />
+              </a>
+            </div>
+
+            {/* Toggle de tema móvil */}
+            <button
+              onClick={toggleTheme}
+              className={`py-3 font-mono text-sm transition-all duration-300 ${isDark
+                ? 'text-gray-300 bg-gray-800 hover:bg-gray-700'
+                : 'text-[#8b7355] bg-[#e8dfd3] hover:bg-[#d4c9b8]'
+                }`}
+            >
+              {isDark ? 'Y' : 'X'}
+            </button>
           </div>
         </div>
-        </div>
-
-      
-      {/* Estilos para la fuente */}
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Cedarville+Cursive&family=Parisienne&display=swap');
-          .font-sweet {
-            font-family: 'Parisienne', cursive;
-            font-weight: 400;
-            font-style: normal;
-          }
-        `}
-      </style>
+      </div>
     </nav>
-  );
-}
-
-// Componente para los enlaces de desktop
-function DesktopLinks({ theme }) {
-  return (
-    <>
-      <Link
-        to="/projects"
-        className={`relative px-4 py-2 md:px-5 md:py-3 text-sm font-medium rounded-full transition-all duration-300 ${
-          theme === 'dark'
-            ? 'text-gray-200 bg-gradient-to-b from-gray-900 to-gray-800 border border-gray-700 hover:text-[#97E3FE] hover:border-[#F394F8] hover:shadow-[0_0_15px_#F394F8]'
-            : 'text-[#CD4662] bg-white border border-[#F4DBDB] hover:bg-[#F4DBDB] hover:text-[#AEC289] hover:shadow-lg hover:border-[#AEC289]'
-        }`}
-      >
-        Proyectos
-      </Link>
-
-      <Link
-        to="/skills"
-        className={`relative px-4 py-2 md:px-5 md:py-3 text-sm font-medium rounded-full transition-all duration-300 ${
-          theme === 'dark'
-            ? 'text-gray-200 bg-gradient-to-b from-gray-900 to-gray-800 border border-gray-700 hover:text-[#F394F8] hover:border-[#97E3FE] hover:shadow-[0_0_15px_#97E3FE]'
-            : 'text-[#CD4662] bg-white border border-[#F4DBDB] hover:bg-[#F4DBDB] hover:text-[#AEC289] hover:shadow-lg hover:border-[#AEC289]'
-        }`}
-      >
-        Tecnologías
-      </Link>
-
-      <ContactMenu theme={theme} />
-    </>
-  );
-}
-
-// Componente para los enlaces móviles
-function MobileLinks({ theme, setMenuOpen }) {
-  return (
-    <>
-      <Link
-        to="/projects"
-        className={`text-lg font-medium py-3 px-6 rounded-full transition-all duration-300 ${
-          theme === 'dark'
-            ? 'text-gray-200 hover:text-[#97E3FE]'
-            : 'text-[#CD4662] hover:text-[#AEC289]'
-        }`}
-        onClick={() => setMenuOpen(false)}
-      >
-        Proyectos
-      </Link>
-
-      <Link
-        to="/skills"
-        className={`text-lg font-medium py-3 px-6 rounded-full transition-all duration-300 ${
-          theme === 'dark'
-            ? 'text-gray-200 hover:text-[#F394F8]'
-            : 'text-[#CD4662] hover:text-[#AEC289]'
-        }`}
-        onClick={() => setMenuOpen(false)}
-      >
-        Tecnologías
-      </Link>
-
-      <div className="flex space-x-6 mt-4">
-        <a href="https://github.com/RFGina" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-2xl p-3 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaGithub />
-        </a>
-        <a href="https://linkedin.com/in/georgina-rotela" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-2xl p-3 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaLinkedin />
-        </a>
-        <a href="https://instagram.com/ginaa_xd7" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-2xl p-3 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaInstagram />
-        </a>
-         <a
-          href="mailto:georginarotela40@gmail.com?subject=Contacto%20desde%20tu%20portfolio&body=Hola%20Gina,"
-          className={`transition-all duration-300 text-xl p-2 rounded-full ${
-            theme === 'dark'
-              ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-              : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-          }`}
-        >
-         
-          <FaEnvelope />
-        </a>
-      </div>
-    </>
-  );
-}
-
-// Componente para el menú de contacto
-function ContactMenu({ theme }) {
-  return (
-    <div className="relative group">
-      <button
-        className={`relative px-4 py-2 md:px-5 md:py-3 text-sm font-medium rounded-full transition-all duration-300 ${
-          theme === 'dark'
-            ? 'text-gray-200 bg-gradient-to-b from-gray-900 to-gray-800 border border-gray-700 hover:text-[#9A53D0] hover:border-[#9A53D0] hover:shadow-[0_0_15px_#9A53D0]'
-            : 'text-[#CD4662] bg-white border border-[#F4DBDB] hover:bg-[#F4DBDB] hover:text-[#AEC289] hover:shadow-lg hover:border-[#AEC289]'
-        }`}
-      >
-        Contacto
-      </button>
-
-      <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 z-50 flex justify-around p-4 ${
-        theme === 'dark'
-          ? 'bg-black border border-[#9A53D0] shadow-[0_0_15px_#F394F8]'
-          : 'bg-white border border-[#F4DBDB] shadow-xl'
-      }`}>
-        <a href="https://github.com/RFGina" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-xl p-2 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaGithub />
-        </a>
-        <a href="https://www.linkedin.com/in/georgina-rotela-1b4442343" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-xl p-2 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaLinkedin />
-        </a>
-        <a href="https://www.instagram.com/ginaa_xd7" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 text-xl p-2 rounded-full ${
-          theme === 'dark'
-            ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-            : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-        }`}>
-          <FaInstagram />
-        </a>
-         <a
-          href="mailto:georginarotela40@gmail.com?subject=Contacto%20desde%20tu%20portfolio&body=Hola%20Gina,"
-          className={`transition-all duration-300 text-xl p-2 rounded-full ${
-            theme === 'dark'
-              ? 'text-[#97E3FE] hover:text-[#F394F8] hover:bg-gray-800'
-              : 'text-[#CD4662] hover:text-[#AEC289] hover:bg-[#F4DBDB]'
-          }`}
-        >
-         
-          <FaEnvelope />
-        </a>
-      </div>
-    </div>
-  );
-}
-
-// Componente para el toggle del tema
-function ThemeToggle({ theme, toggleTheme }) {
-  return (
-    <button
-      onClick={toggleTheme}
-      className={`p-3 rounded-full transition-all duration-300 ${
-        theme === 'dark'
-          ? 'text-gray-200 bg-gray-800 hover:bg-gray-700 hover:text-[#9A53D0]'
-          : 'text-[#CD4662] bg-white border border-[#F4DBDB] hover:bg-[#F4DBDB] hover:text-[#AEC289]'
-      }`}
-      aria-label="Cambiar tema"
-    >
-      {theme === 'dark' ? <FaSun className="text-lg" /> : <FaMoon className="text-lg" />}
-    </button>
   );
 }

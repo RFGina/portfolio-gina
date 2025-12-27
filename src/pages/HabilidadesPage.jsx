@@ -1,194 +1,82 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTheme } from "../hooks/useTheme";
 
 export function HabilidadesPage() {
-  const [skills, setSkills] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
-  // Datos con historia integrada
-  const habilidadesManuales = [
-    {
-      id: 1,
-      title: "Python",
-    },
-    {
-      id: 2,
-      title: "Django",
-    },
-    {
-      id: 3,
-      title: "Django REST Framework",
-    },
-    {
-      id: 4,
-      title: "JavaScript",
-    },
-    {
-      id: 5,
-      title: "React",
-    },
-    {
-      id: 6,
-      title: "FastAPI",
-    },
-    {
-      id: 7,
-      title: "Docker",
-    },
-    {
-      id: 8,
-      title: "Java",
-    },
-  ];
-
-  // Simular carga de datos
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSkills(habilidadesManuales);
-      setLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div
-        className={`min-h-screen flex items-center justify-center transition-all duration-500 ${theme === "dark" ? "bg-black" : "bg-[#F4F2EF]"
-          }`}
-      >
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4 border-[#97E3FE]"></div>
-          <p className={theme === "dark" ? "text-gray-300" : "text-[#5A3E36]"}>
-            Cargando habilidades...
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const [skills] = useState([
+    { id: 1, title: "Python", category: "Backend" },
+    { id: 2, title: "Django", category: "Backend" },
+    { id: 3, title: "Django REST", category: "Backend" },
+    { id: 6, title: "FastAPI", category: "Backend" },
+    { id: 7, title: "Docker", category: "DevOps" },
+    { id: 8, title: "PostgreSQL", category: "Database" },
+    { id: 9, title: "Git", category: "Herramientas" },
+    { id: 10, title: "Linux", category: "Sistemas" },
+    { id: 12, title: "APIs REST", category: "Backend" },
+  ]);
 
   return (
-    <div
-      className={`min-h-screen px-8 py-12 transition-all duration-500 ${theme === "dark"
-        ? "bg-black text-gray-200"
-        : "bg-[#F4F2EF] text-[#5A3E36]"
-        }`}
-    >
-      {/* Título principal */}
-      <h1
-        className={`text-3xl font-bold mb-8 tracking-wide transition-all duration-500 text-center ${theme === "dark"
-          ? "glitch text-[#97E3FE]"
-          : "text-[#CD4662] font-serif italic drop-shadow-sm"
-          }`}
-        {...(theme === "dark" && { "data-text": "HABILIDADES" })}
-      >
-        HABILIDADES
-        {theme === "light" && (
-          <div className="w-20 h-1 bg-[#AEC289] mt-2 rounded-full mx-auto"></div>
-        )}
-      </h1>
+    <div id="skills" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'
+      }`}>
+      <div className="max-w-6xl mx-auto">
 
-      {/* Texto introductorio */}
-      <p
-        className={`max-w-3xl mx-auto mb-12 text-lg leading-relaxed text-center transition-all duration-500 ${theme === "dark" ? "text-gray-300" : "text-[#5A3E36]"
-          }`}
-      >
-        Muchas de mis prácticas y proyectos se pueden encontrar en <strong>GitHub</strong>
-        .
-      </p>
+        {/* Título minimalista */}
+        <div className="mb-12 md:mb-16">
+          <h1 className={`font-mono text-2xl md:text-3xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+            }`}>
+            &gt; habilidades
+          </h1>
+          <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'
+            }`}></div>
+          <p className={`font-light max-w-3xl transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-[#a0907a]'
+            }`}>
+            Tecnologías y herramientas que utilizo para desarrollar sistemas backend.
+          </p>
+        </div>
 
-      {/* Grid de habilidades */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {skills.map((skill, i) => (
-          <div
-            key={skill.id || i}
-            className={`relative group p-6 rounded-2xl border transition-all duration-500 ${theme === "dark"
-              ? "border-[#9A53D0] bg-gradient-to-br from-[#2843AD] to-[#818DE0] shadow-[0_0_25px_#F394F8] hover:border-[#F394F8]"
-              : "border-[#F4DBDB] bg-white shadow-lg hover:shadow-xl hover:border-[#AEC289] hover:transform hover:scale-105"
+        {/* Grid de habilidades */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {skills.map((skill) => (
+            <div
+              key={skill.id}
+              className={`p-4 border transition-all duration-300 group ${isDark
+                ? 'border-gray-800 bg-[#1a1a1a] hover:border-gray-600'
+                : 'border-[#d4c9b8] bg-white hover:border-[#8b7355]'
+                }`}
+            >
+              <h3 className={`font-mono text-lg mb-2 transition-colors duration-300 ${isDark
+                ? 'text-gray-300 group-hover:text-white'
+                : 'text-[#8b7355] group-hover:text-[#5d4c3a]'
+                }`}>
+                {skill.title}
+              </h3>
+              <span className={`text-xs font-light transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
+                }`}>
+                {skill.category}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Enlace a GitHub */}
+        <div className="mt-16 text-center">
+          <a
+            href="https://github.com/RFGina"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 px-6 py-3 border font-mono text-sm 
+                     hover:bg-opacity-90 transition-all duration-300 ${isDark
+                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800 hover:text-white'
+                : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'
               }`}
           >
-            {/* Fondo animado */}
-            {theme === "dark" ? (
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-15
-                bg-gradient-to-r from-[#97E3FE] via-[#F394F8] to-[#F7ED97] blur-2xl 
-                transition duration-700"
-              ></div>
-            ) : (
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500
-                bg-gradient-to-br from-[#F4DBDB20] to-[#AEC28920]"
-              ></div>
-            )}
-
-            {/* Decoración modo claro */}
-            {theme === "light" && (
-              <div className="absolute top-3 right-3 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  fill="#CD4662"
-                >
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-              </div>
-            )}
-
-            {/* Contenido */}
-            <div className="relative z-10">
-              <h2
-                className={`text-xl font-bold mb-3 transition-colors duration-300 ${theme === "dark"
-                  ? "text-gray-100 group-hover:text-[#97E3FE]"
-                  : "text-[#CD4662] group-hover:text-[#AEC289]"
-                  }`}
-              >
-                {skill.title}
-              </h2>
-              <p
-                className={`text-sm leading-relaxed transition-colors duration-300 ${theme === "dark" ? "text-gray-300" : "text-[#5A3E36]"
-                  }`}
-              >
-                {skill.description}
-              </p>
-            </div>
-          </div>
-        ))}
+            <span>ver_repositorios()</span>
+            <span className="text-lg">→</span>
+          </a>
+        </div>
       </div>
-
-      {/* Estilos glitch */}
-      <style>
-        {`
-          .glitch {
-            position: relative;
-            display: inline-block;
-          }
-          .glitch::before {
-            content: attr(data-text);
-            position: absolute;
-            left: -2px;
-            text-shadow: -2px 0 #F394F8;
-            clip: rect(0, 900px, 0, 0);
-            animation: glitch-animation 2s infinite linear alternate-reverse;
-          }
-          .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 2px;
-            text-shadow: -2px 0 #97E3FE;
-            clip: rect(0, 900px, 0, 0);
-            animation: glitch-animation 3s infinite linear alternate-reverse;
-          }
-          @keyframes glitch-animation {
-            0% { clip: rect(30px, 9999px, 30px, 0); }
-            20% { clip: rect(60px, 9999px, 65px, 0); }
-            40% { clip: rect(40px, 9999px, 60px, 0); }
-            60% { clip: rect(70px, 9999px, 60px, 0); }
-            80% { clip: rect(50px, 9999px, 70px, 0); }
-            100% { clip: rect(60px, 9999px, 60px, 0); }
-          }
-        `}
-      </style>
     </div>
   );
 }

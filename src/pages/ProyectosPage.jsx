@@ -1,253 +1,144 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { useTheme } from "../hooks/useTheme";
 
 export function ProyectosPage() {
-  const [proyectos, setProyectos] = useState([]);
-  const [current, setCurrent] = useState(0);
   const { theme } = useTheme();
-  const videoRef = useRef(null);
+  const isDark = theme === 'dark';
 
-  // Datos manuales con Cloudinary
-  const proyectosManuales = [
+  const [proyectos] = useState([
     {
       id: 1,
-      title: "Sistema de Gestión CEP 62 - Django",
-      description: "Aplicación web completa desarrollada para el Instituto Superior CEP 62. Sistema gestor de datos académicos que automatiza procesos de calificaciones, asistencias y mesas de exámenes, facilitando la toma de decisiones y reduciendo errores humanos significativamente.",
-      technologies: ["Django", "Python", "PostgreSQL", "JavaScript", "tailwindcss"],
+      title: "Sistema de Gestión CEP 62",
+      description: "Aplicación web completa para el Instituto Superior CEP 62. Automatiza calificaciones, asistencias y mesas de exámenes.",
+      technologies: ["Django", "Python", "PostgreSQL", "JavaScript", "Tailwind"],
       features: [
         "Gestión completa de calificaciones y asistencias",
         "Control automatizado de mesas de exámenes",
-        "Generación de reportes estadísticos",
         "Dashboard administrativo intuitivo",
-        "Reducción de errores humanos en procesos críticos"
+        "Generación de reportes estadísticos"
       ],
-      video: "https://res.cloudinary.com/drr75muur/video/upload/v1758406992/projects/na9iyuegfmroxczdlrnt.mp4",
-      thumbnail: "https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567/cep62-thumbnail.jpg",
-      link: "#",
+      github: "#", // Propiedad intelectual
+      demo: "https://res.cloudinary.com/drr75muur/video/upload/v1758406992/projects/na9iyuegfmroxczdlrnt.mp4",
       type: "video"
     },
     {
       id: 2,
-      title: "FlashCard Master - Django REST + React",
-      description: "Aplicación full-stack para gestión de estudios con flashcards. Backend desarrollado con Django REST Framework y frontend moderno con React, permitiendo crear, organizar y estudiar con flashcards de manera eficiente.",
-      technologies: ["Django REST", "React", "Python", "JavaScript", "SQLite", "Chakra"],
+      title: "FlashCard app Arandú",
+      description: "Aplicación full-stack para gestión de estudios con flashcards. Backend en Django REST Framework y frontend en React.",
+      technologies: ["Django REST", "React", "Python", "SQLite", "Chakra UI"],
       features: [
         "Creación y organización de flashcards",
         "Sistema de repetición espaciada",
         "Categorías y etiquetas personalizadas",
         "API REST completa",
-        "Interfaz responsive y moderna"
+        "Interfaz responsive"
       ],
-      video: "https://res.cloudinary.com/drr75muur/video/upload/v1759065954/projects/yube0kdysylq90yezm2e.mp4",
-      thumbnail: "https://res.cloudinary.com/tu-cloud-name/image/upload/v1234567/flashcard-thumbnail.jpg",
-      link: "#",
+      github: " https://github.com/RFGina/Arandu_GestorDeEstudios",
+      demo: "https://res.cloudinary.com/drr75muur/video/upload/v1759065954/projects/yube0kdysylq90yezm2e.mp4",
       type: "video"
     },
-    
-  ];
+    {
+      id: 3,
+      title: "Veturn Backend",
+      description: "Backend RESTful para gestión de veterinarias, tutores, mascotas, profesionales y turnos. Desarrollado con FastAPI y SQLAlchemy.",
+      technologies: ["FastAPI", "Python", "SQLAlchemy", "SQLite", "Bcrypt"],
+      features: [
+        "CRUD completo para veterinarias, tutores y mascotas",
+        "Gestión de turnos y servicios",
+        "Passwords hash con Bcrypt",
+        "Relaciones complejas entre entidades",
+        "Documentación automática con Swagger UI"
+      ],
+      github: "https://github.com/RFGina/veturn_backend",
+      type: "card"
+    },
+    {
+      id: 4,
+      title: "Backend de Análisis y Scoring de Estudiantes",
+      description: "API backend desarrollada en Python con FastAPI que permite analizar datos de estudiantes, calcular métricas de rendimiento y generar un scoring predictivo.",
+      technologies: ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Pydantic", "Docker", "pytest", "GitHub Actions (CI/CD)"],
+      features: [
+        "Endpoints REST para consultar resultados y métricas.",
 
-  // Cargar proyectos manualmente
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setProyectos(proyectosManuales);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+        "Validación de datos y manejo de errores con Pydantic.",
 
-  // Reiniciar video cuando cambia el proyecto
-  useEffect(() => {
-    if (videoRef.current && proyectos[current]?.type === 'video') {
-      videoRef.current.load();
-      videoRef.current.play().catch(e => {
-        console.log("Auto-play prevenido:", e);
-      });
+        "Persistencia de datos con PostgreSQL y SQLAlchemy.",
+
+        "Contenedorización con Docker y configuración de variables de entorno.",
+
+        "Tests unitarios y de integración, con pipelines de CI/CD.",
+
+        "Algoritmos de scoring y predicción integrados en la API."
+
+
+      ],
+      github: "#", // aún no disponible
+      type: "card"
     }
-  }, [current, proyectos]);
-
-  const nextSlide = () => {
-    setCurrent((prev) => prev === proyectos.length - 1 ? 0 : prev + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => prev === 0 ? proyectos.length - 1 : prev - 1);
-  };
-
-  // Componentes SVG para las flechas
-  const ArrowLeft = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="m15 18-6-6 6-6"/>
-    </svg>
-  );
-
-  const ArrowRight = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="m9 18 6-6-6-6"/>
-    </svg>
-  );
-
-  const renderMedia = (proyecto) => {
-    if (proyecto.type === 'video' && proyecto.video) {
-      return (
-        <div className="mt-6 mx-auto w-full max-w-2xl">
-          <div className="relative">
-            <video
-              ref={videoRef}
-              key={proyecto.id}
-              controls
-              muted
-              loop
-              playsInline
-              className="w-full rounded-lg shadow-lg"
-              poster={proyecto.thumbnail}
-            >
-              <source src={proyecto.video} type="video/mp4" />
-              Tu navegador no soporta el elemento de video.
-            </video>
-            {/* Indicador de video */}
-            <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
-              🎥 VIDEO
-            </div>
-          </div>
-          <p className={`text-sm mt-2 text-center ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            Demo en video - {proyecto.title}
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className="mt-6 mx-auto w-full max-w-2xl">
-          <img
-            src={proyecto.image}
-            alt={proyecto.title}
-            className="w-full rounded-lg shadow-lg object-cover h-64 transition-transform duration-300 hover:scale-105"
-          />
-          <p className={`text-sm mt-2 text-center ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            Preview del proyecto - {proyecto.title}
-          </p>
-        </div>
-      );
-    }
-  };
-
-  if (proyectos.length === 0) {
-    return (
-      <div className={`min-h-screen flex items-center justify-center transition-all duration-500 ${
-        theme === 'dark' ? 'bg-black' : 'bg-[#F4F2EF]'
-      }`}>
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4 border-[#97E3FE]"></div>
-          <p className={theme === 'dark' ? 'text-gray-300' : 'text-[#5A3E36]'}>
-            Cargando Proyectos...
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  const currentProyecto = proyectos[current];
+  ]);
 
   return (
-    <div className={`min-h-screen px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 flex flex-col items-center transition-all duration-500 ${
-      theme === "dark" ? "bg-black text-gray-200" : "bg-[#F4F2EF] text-[#5A3E36]"
-    }`}>
-      
-      {/* Título */}
-      <h1 className={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wider sm:tracking-widest mb-6 sm:mb-8 md:mb-10 transition-all duration-500 text-center ${
-        theme === "dark" ? "glitch text-[#97E3FE]" : "text-[#CD4662] font-serif italic"
-      }`} data-text={theme === "dark" ? "PROYECTOS" : ""}>
-        PROYECTOS
-      </h1>
-
-      {/* Carrusel */}
-      <div className="relative w-full max-w-4xl">
-        <div className={`p-6 sm:p-8 md:p-10 rounded-xl border transition-all duration-500 mx-2 ${
-          theme === "dark"
-            ? "border-[#9A53D0] bg-gradient-to-br from-[#2843AD] to-[#818DE0] shadow-[0_0_15px_#F394F8]"
-            : "border-[#F4DBDB] bg-white shadow-lg"
-        }`}>
-          
-          {/* Información del proyecto */}
-          <div className="text-center mb-6">
-            <h2 className={`text-2xl sm:text-3xl font-bold transition-colors duration-500 mb-4 ${
-              theme === "dark" ? "text-[#F394F8] drop-shadow-[0_0_4px_#F394F8]" : "text-[#CD4662]"
-            }`}>
-              {currentProyecto.title}
-            </h2>
-            
-            <p className={`my-4 text-base sm:text-lg leading-relaxed ${
-              theme === "dark" ? "text-gray-300" : "text-[#5A3E36]"
-            }`}>
-              {currentProyecto.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 justify-center my-4">
-              {currentProyecto.technologies?.map((tech, index) => (
-                <span key={index} className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
-                  theme === 'dark' ? 'bg-[#9A53D0] text-gray-100 hover:bg-[#F394F8]' : 'bg-[#F4DBDB] text-[#5A3E36] hover:bg-[#AEC289] hover:text-white'
-                }`}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="my-6 text-left max-w-2xl mx-auto">
-              <h3 className={`font-semibold mb-3 text-center ${
-                theme === 'dark' ? 'text-[#97E3FE]' : 'text-[#AEC289]'
-              }`}>
-                Características principales:
-              </h3>
-              <ul className={`grid grid-cols-1 gap-3 text-sm ${
-                theme === 'dark' ? 'text-gray-300' : 'text-[#5A3E36]'
-              }`}>
-                {currentProyecto.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className={`mr-2 mt-1 ${
-                      theme === 'dark' ? 'text-[#F394F8]' : 'text-[#CD4662]'
-                    }`}>•</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-          </div>
-
-          {/* Media */}
-          {renderMedia(currentProyecto)}
+    <div id="projects" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'}`}>
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 md:mb-16">
+          <h1 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
+            &gt; proyectos
+          </h1>
+          <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'}`}></div>
+          <p className={`font-light max-w-3xl transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-[#a0907a]'}`}>
+            Mis proyectos, algunos con video de demostración y otros en desarrollo.
+          </p>
         </div>
 
-        {/* Botones de navegación */}
-        <button onClick={prevSlide} className={`absolute top-1/2 -left-3 sm:-left-4 md:-left-12 transform -translate-y-1/2 p-3 rounded-full transition-all z-10 shadow-lg ${
-          theme === "dark" ? "bg-[#2843AD] hover:bg-[#3843DD] text-[#F394F8] hover:text-white" : "bg-[#CD4662] hover:bg-[#AD2642] text-white"
-        }`} aria-label="Proyecto anterior">
-          <ArrowLeft />
-        </button>
-        <button onClick={nextSlide} className={`absolute top-1/2 -right-3 sm:-right-4 md:-right-12 transform -translate-y-1/2 p-3 rounded-full transition-all z-10 shadow-lg ${
-          theme === "dark" ? "bg-[#2843AD] hover:bg-[#3843DD] text-[#F394F8] hover:text-white" : "bg-[#CD4662] hover:bg-[#AD2642] text-white"
-        }`} aria-label="Siguiente proyecto">
-          <ArrowRight />
-        </button>
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {proyectos.map((proyecto) => (
+            <div key={proyecto.id} className={`border transition-all duration-300 hover:border-opacity-100 rounded-lg overflow-hidden ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}>
 
-      {/* Indicadores */}
-      <div className="flex gap-3 mt-6 sm:mt-8 flex-wrap justify-center">
-        {proyectos.map((proyecto, i) => (
-          <button key={proyecto.id} onClick={() => setCurrent(i)} className={`h-3 w-3 sm:h-4 sm:w-4 rounded-full transition-all duration-300 ${
-            i === current
-              ? theme === "dark" ? "bg-[#F394F8] shadow-[0_0_8px_#F394F8]" : "bg-[#CD4662] shadow-[0_0_6px_#CD4662]"
-              : theme === "dark" ? "bg-[#2843AD] hover:bg-[#3843DD]" : "bg-[#AEC289] hover:bg-[#8EA269]"
-          }`} aria-label={`Ver proyecto: ${proyecto.title}`}></button>
-        ))}
-      </div>
+              <div className={`p-6 border-b ${isDark ? 'border-gray-800' : 'border-[#d4c9b8]'}`}>
+                <h3 className={`font-mono text-xl ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>{proyecto.title}</h3>
+                <p className={`mt-2 ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>{proyecto.description}</p>
+              </div>
 
-      {/* Contador */}
-      <div className={`mt-4 text-center ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-        <div className="text-sm mb-2">{current + 1} / {proyectos.length}</div>
-        <div className="text-xs italic">{currentProyecto.technologies.slice(0, 3).join(' • ')}</div>
+              <div className={`p-6 border-b ${isDark ? 'border-gray-800' : 'border-[#d4c9b8]'}`}>
+                <div className="flex flex-wrap gap-2">
+                  {proyecto.technologies.map((tech, index) => (
+                    <span key={index} className={`px-3 py-1 text-xs font-mono rounded ${isDark ? 'bg-gray-800 text-gray-400' : 'bg-[#f5f1eb] text-[#8b7355]'}`}>{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`p-6 border-b ${isDark ? 'border-gray-800' : 'border-[#d4c9b8]'}`}>
+                <h4 className={`text-sm font-mono mb-3 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'}`}>Características:</h4>
+                <ul className="space-y-2">
+                  {proyecto.features.map((feature, index) => (
+                    <li key={index} className={`text-sm flex items-start ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>
+                      <span className={`mr-2 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>-</span>{feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {proyecto.type === 'video' && (
+                <div className="p-6">
+                  <video controls loop muted className="w-full rounded-lg shadow-lg">
+                    <source src={proyecto.demo} type="video/mp4" />
+                    Tu navegador no soporta el elemento de video.
+                  </video>
+                </div>
+              )}
+
+              <div className="p-6 flex gap-4">
+                {proyecto.github !== "#" && (
+                  <a href={proyecto.github} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}>
+                    <FaGithub /> GitHub
+                  </a>
+                )}
+              </div>
+
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

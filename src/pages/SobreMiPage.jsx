@@ -1,81 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTheme } from "../hooks/useTheme";
-import fondoDark from "../assets/img/fondodark2.png";
 import fondoLight from "../assets/img/fondoClaro2.png";
+import fondoDark from "../assets/img/fondodark2.png";
 
 export function SobreMiPage() {
-  const [bounce, setBounce] = useState(false);
   const { theme } = useTheme();
-
-  useEffect(() => {
-    const interval = setInterval(() => setBounce((prev) => !prev), 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const isDark = theme === "dark";
+  const isDark = theme === 'dark';
 
   return (
-    <div
-      className={`min-h-screen flex flex-col items-center justify-center px-8 py-12 gap-4 transition-all duration-500
-      ${isDark ? "bg-black text-gray-200" : "bg-[#F4F2EF] text-[#5A3E36]"}`}
-    >
-      {/* Título */}
-      <h2
-        className={`text-5xl font-extrabold tracking-wider mb-2 transition-all duration-500
-        ${isDark
-          ? "text-[#97E3FE] drop-shadow-[0_0_8px_#97E3FE] hover:text-[#F394F8]"
-          : "text-[#CD4662] hover:text-[#AEC289]"}`}
-      >
-        Gina Rotela
-      </h2>
+    <div id="about" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'
+      }`}>
+      <div className="max-w-4xl mx-auto">
 
-      {/* Imagen + Texto */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 max-w-5xl w-full">
-        
-        {/* Imagen */}
-        <div
-          className={`w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 transition-all duration-500
-          ${bounce ? "translate-y-4" : "-translate-y-4"}
-          ${isDark
-            ? "border-[#97E3FE] shadow-[0_0_8px_#97E3FE] hover:border-[#F394F8]"
-            : "border-[#AEC289] shadow-[0_0_8px_#AEC289] hover:border-[#CD4662]"}`}
-        >
-          <img
-            src={isDark ? fondoDark : fondoLight}
-            alt="Sobre mí"
-            className="w-full h-full object-cover"
-          />
+        {/* Encabezado */}
+        <div className="mb-12">
+          <h1 className={`font-mono text-2xl md:text-3xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+            }`}>
+            &gt; sobre_mi
+          </h1>
+          <div className={`h-px w-24 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'
+            }`}></div>
         </div>
 
-        {/* Texto */}
-        <div
-          className={`flex-1 max-w-xl text-center lg:text-left space-y-4 transition-colors duration-500
-          ${isDark ? "text-gray-300" : "text-[#5A3E36]"}`}
-        >
-          <p className="text-lg font-semibold">
-            ¡Hola! Soy Georgina, nací en 2001 en Iguazú, Misiones.
-          </p>
+        {/* Contenido */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
-          <p className="text-lg leading-relaxed">
-            Soy{" "}
-            <span
-              className={`font-bold tracking-wide inline-block transition-all duration-500
-              ${isDark ? "glitch text-[#97E3FE]" : "text-[#CD4662] font-serif italic drop-shadow-sm"}`}
-            >
-              Técnica Superior en Análisis de Sistemas
-            </span>
-            , y me apasiona el{" "}
-            <span
-              className={`font-bold tracking-wide inline-block transition-all duration-500
-              ${isDark ? "glitch text-[#97E3FE]" : "text-[#CD4662] font-serif italic drop-shadow-sm"}`}
-            >
-              desarrollo web
-            </span>
-            . Creo que el desarrollo puede ser una forma divertida y creativa
-            de unir lógica, análisis y experimentación.  
-            Me gusta explorar nuevas formas de construir y entender sistemas
-            a través de la práctica.
-          </p>
+          {/* Imagen */}
+          <div className={`w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 overflow-hidden rounded border-4 transition-colors duration-300 ${isDark ? 'border-gray-700' : 'border-[#d4c9b8]'
+            }`}>
+            <img
+              src={isDark ? fondoDark : fondoLight}
+              alt="Georgina Rotela"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Texto */}
+          <div className="flex-1">
+            <h2 className={`text-xl md:text-2xl font-mono mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+              }`}>
+              Georgina Rotela
+            </h2>
+
+            <div className={`space-y-4 transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'
+              }`}>
+              <p className="leading-relaxed">
+                ¡Hola! Soy Georgina, Técnico Superior en Análisis de Sistemas nacida en Iguazú, Misiones.
+              </p>
+
+              <p className="leading-relaxed">
+                Me especializo en desarrollo backend con Python, Django y creación de APIs, creando sistemas robustos y escalables.
+                Me apasiona resolver problemas complejos y construir arquitecturas eficientes.
+              </p>
+
+              <p className="leading-relaxed">
+                Mi enfoque está en escribir código limpio, mantenible y bien documentado,
+                priorizando la calidad y la escalabilidad en cada proyecto.
+              </p>
+            </div>
+
+            {/* Información técnica */}
+            <div className={`mt-8 pt-6 border-t transition-colors duration-300 ${isDark ? 'border-gray-800' : 'border-[#d4c9b8]'
+              }`}>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className={`text-sm transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
+                    }`}>Especialidad</span>
+                  <p className={`font-mono transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+                    }`}>Backend Developer</p>
+                </div>
+                <div>
+                  <span className={`text-sm transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
+                    }`}>Ubicación</span>
+                  <p className={`font-mono transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
+                    }`}>Capioví, Misiones, Argentina</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
