@@ -94,7 +94,7 @@ export function Navegation() {
               }`}>
               <FaGithub className="text-lg" />
             </a>
-            <a href="www.linkedin.com/in/georgina-rotela-1b4442343" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-2 ${isDark
+            <a href="https://www.linkedin.com/in/georgina-rotela-1b4442343" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-2 ${isDark
               ? 'text-gray-400 hover:text-gray-200'
               : 'text-[#a0907a] hover:text-[#8b7355]'
               }`}>
@@ -168,7 +168,7 @@ export function Navegation() {
                 }`}>
                 <FaGithub className="text-xl" />
               </a>
-              <a href="www.linkedin.com/in/georgina-rotela-1b4442343" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-3 ${isDark
+              <a href="https://www.linkedin.com/in/georgina-rotela-1b4442343" target="_blank" rel="noopener noreferrer" className={`transition-all duration-300 p-3 ${isDark
                 ? 'text-gray-400 hover:text-gray-200'
                 : 'text-[#a0907a] hover:text-[#8b7355]'
                 }`}>
