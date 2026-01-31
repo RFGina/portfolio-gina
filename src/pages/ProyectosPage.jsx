@@ -121,12 +121,37 @@ export function ProyectosPage() {
               )}
 
               <div className="p-6 flex gap-4">
-                {proyecto.github !== "#" && (
-                  <a href={proyecto.github} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}>
+
+                {proyecto.link && (
+                  <a
+                    href={proyecto.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm 
+                ${isDark ?
+                        'border-green-600 text-green-400 hover:bg-green-800 hover:text-white' :
+                        'border-green-700 text-green-700 hover:bg-green-700 hover:text-white'}`}
+                  >
+                    Ver demo
+                  </a>
+                )}
+
+                {proyecto.github && proyecto.github !== "#" && (
+                  <a
+                    href={proyecto.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm 
+                ${isDark ?
+                        'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' :
+                        'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
+                  >
                     <FaGithub /> GitHub
                   </a>
                 )}
+
               </div>
+
 
             </div>
           ))}
