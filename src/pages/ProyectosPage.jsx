@@ -55,27 +55,19 @@ export function ProyectosPage() {
     },
     {
       id: 4,
-      title: "Backend de Análisis y Scoring de Estudiantes",
-      description: "API backend desarrollada en Python con FastAPI que permite analizar datos de estudiantes, calcular métricas de rendimiento y generar un scoring predictivo.",
-      technologies: ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Pydantic", "Docker", "pytest", "GitHub Actions (CI/CD)"],
+      title: "ILoveSQL Blog",
+      description: "Blog personal donde documento mi aprendizaje en bases de datos y desarrollo web. Incluye una API en Django para gestionar artículos y un frontend en React.",
+      technologies: ["Python", "Django", "Django REST Framework", "SQLite", "React"],
       features: [
-        "Endpoints REST para consultar resultados y métricas.",
-
-        "Validación de datos y manejo de errores con Pydantic.",
-
-        "Persistencia de datos con PostgreSQL y SQLAlchemy.",
-
-        "Contenedorización con Docker y configuración de variables de entorno.",
-
-        "Tests unitarios y de integración, con pipelines de CI/CD.",
-
-        "Algoritmos de scoring y predicción integrados en la API."
-
-
+        "API REST",
+        "CRUD de artículos",
+        "Autenticación de usuarios",
+        "Frontend desacoplado"
       ],
-      github: "#", // aún no disponible
+      link: "https://ilovesql.netlify.app/",
       type: "card"
     }
+
   ]);
 
   return (
