@@ -45,17 +45,16 @@ export function SobreMiPage() {
             <div className={`space-y-4 transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'
               }`}>
               <p className="leading-relaxed">
-                ¡Hola! Soy Georgina, Técnico Superior en Análisis de Sistemas nacida en Iguazú, Misiones.
+                ¡Hola! Soy Gina.
+                Desde que comencé mis estudios en Análisis de Sistemas, no he dejado de explorar el desarrollo de sistemas y web.
               </p>
 
               <p className="leading-relaxed">
-                Me especializo en desarrollo backend con Python, Django y creación de APIs, creando sistemas robustos y escalables.
-                Me apasiona resolver problemas complejos y construir arquitecturas eficientes.
+                Ayudo a proyectos pequeños y medianos a digitalizar sus procesos y organizar su información, desde el análisis de requerimientos hasta el diseño de bases de datos y la construcción de sistemas funcionales.
               </p>
 
               <p className="leading-relaxed">
-                Mi enfoque está en escribir código limpio, mantenible y bien documentado,
-                priorizando la calidad y la escalabilidad en cada proyecto.
+                Hoy me enfoco en crear soluciones claras y mantenibles que faciliten la vida de clientes y equipos, mientras sigo perfeccionando mis habilidades en desarrollo y gestión de datos.
               </p>
             </div>
 

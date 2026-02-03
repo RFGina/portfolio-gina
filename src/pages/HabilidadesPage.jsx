@@ -6,16 +6,27 @@ export function HabilidadesPage() {
   const isDark = theme === 'dark';
 
   const [skills] = useState([
+    // Backend
     { id: 1, title: "Python", category: "Backend" },
     { id: 2, title: "Django", category: "Backend" },
     { id: 3, title: "Django REST", category: "Backend" },
-    { id: 6, title: "FastAPI", category: "Backend" },
-    { id: 7, title: "Docker", category: "DevOps" },
-    { id: 8, title: "PostgreSQL", category: "Database" },
-    { id: 9, title: "Git", category: "Herramientas" },
-    { id: 10, title: "Linux", category: "Sistemas" },
-    { id: 12, title: "APIs REST", category: "Backend" },
+    { id: 4, title: "FastAPI", category: "Backend" },
+
+    // Databases
+    { id: 5, title: "PostgreSQL", category: "Database" },
+    { id: 6, title: "MySQL", category: "Database" },
+    { id: 7, title: "SQL Avanzado", category: "Database" },
+
+
+    // DevOps / Sistemas
+    { id: 15, title: "Docker", category: "DevOps" },
+    { id: 16, title: "Linux", category: "Sistemas" },
+
+    // Herramientas
+    { id: 18, title: "Git", category: "Herramientas" },
+    { id: 19, title: "APIs REST", category: "Backend" },
   ]);
+
 
   return (
     <div id="skills" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'
