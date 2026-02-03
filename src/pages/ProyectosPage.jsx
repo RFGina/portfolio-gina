@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FaGithub, FaPaperPlane } from "react-icons/fa";
 import { useTheme } from "../hooks/useTheme";
 
-
 export function ProyectosPage() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -68,12 +67,15 @@ export function ProyectosPage() {
       link: "https://ilovesql.netlify.app/",
       type: "card"
     }
-
   ]);
 
   return (
     <div id="projects" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'}`}>
+
+      {/* Todo el contenido envuelto en max-w-6xl para que esté alineado */}
       <div className="max-w-6xl mx-auto">
+
+        {/* SECCIÓN PROYECTOS */}
         <div className="mb-12 md:mb-16">
           <h1 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
             &gt; proyectos
@@ -84,10 +86,9 @@ export function ProyectosPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
           {proyectos.map((proyecto) => (
             <div key={proyecto.id} className={`border transition-all duration-300 hover:border-opacity-100 rounded-lg overflow-hidden ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}>
-
               <div className={`p-6 border-b ${isDark ? 'border-gray-800' : 'border-[#d4c9b8]'}`}>
                 <h3 className={`font-mono text-xl ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>{proyecto.title}</h3>
                 <p className={`mt-2 ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>{proyecto.description}</p>
@@ -116,105 +117,82 @@ export function ProyectosPage() {
                 <div className="p-6">
                   <video controls loop muted className="w-full rounded-lg shadow-lg">
                     <source src={proyecto.demo} type="video/mp4" />
-                    Tu navegador no soporta el elemento de video.
                   </video>
                 </div>
               )}
 
               <div className="p-6 flex gap-4">
-
                 {proyecto.link && (
-                  <a
-                    href={proyecto.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm 
-                ${isDark ?
-                        'border-green-600 text-green-400 hover:bg-green-800 hover:text-white' :
-                        'border-green-700 text-green-700 hover:bg-green-700 hover:text-white'}`}
-                  >
+                  <a href={proyecto.link} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm ${isDark ? 'border-green-600 text-green-400 hover:bg-green-800 hover:text-white' : 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white'}`}>
                     Ver demo
                   </a>
                 )}
-
                 {proyecto.github && proyecto.github !== "#" && (
-                  <a
-                    href={proyecto.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm 
-                ${isDark ?
-                        'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' :
-                        'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
-                  >
+                  <a href={proyecto.github} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}>
                     <FaGithub /> GitHub
                   </a>
                 )}
-
               </div>
-
-
             </div>
           ))}
         </div>
-      </div>
-      <div className="mb-12 md:mb-16">
-        <h1 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
-          &gt; Escribime
-        </h1>
-        <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'}`}></div>
 
-      </div>
-
-      <section className="grid md:grid-cols-2 gap-8">
-        {/* Lado Izquierdo: Mensaje */}
-        <div className={`p-8 border rounded-lg flex flex-col justify-center ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}>
-          <h3 className={`font-mono text-2xl mb-4 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
-            ¿Tienes un proyecto en mente?
-          </h3>
-          <p className={`font-light ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>
-            Estoy disponible para nuevas oportunidades y colaboraciones. Si quieres contactarme de forma directa, puedes enviarme un mensaje a través del formulario.
-          </p>
+        {/* SECCIÓN ESCRIBIME (Ahora bien alineada) */}
+        <div className="mb-12">
+          <h2 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
+            &gt; escribime
+          </h2>
+          <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'}`}></div>
         </div>
 
-        {/* Lado Derecho: Formulario */}
-        <form
-          action="https://formspree.io/f/xlgnkkge"
-          method="POST"
-          className={`p-8 border rounded-lg flex flex-col gap-4 ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}
-        >
-          <div className="grid grid-cols-1 gap-4">
-            <input
-              type="text"
-              name="nombre"
-              required
-              placeholder="Nombre"
-              className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Email"
-              className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
-            />
+        <section className="grid md:grid-cols-2 gap-8 pb-20">
+          <div className={`p-8 border rounded-lg flex flex-col justify-center ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}>
+            <h3 className={`font-mono text-2xl mb-4 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
+              ¿Tienes un proyecto en mente?
+            </h3>
+            <p className={`font-light leading-relaxed ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>
+              Estoy disponible para nuevas oportunidades y colaboraciones. Si quieres contactarme de forma directa, puedes enviarme un mensaje a través del formulario.
+            </p>
           </div>
-          <textarea
-            name="mensaje"
-            required
-            placeholder="Mensaje..."
-            rows="4"
-            className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all resize-none ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
-          ></textarea>
 
-          <button
-            type="submit"
-            className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
+          <form
+            action="https://formspree.io/f/xlgnkkge"
+            method="POST"
+            className={`p-8 border rounded-lg flex flex-col gap-4 ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}
           >
-            <FaPaperPlane className="text-xs" /> Enviar mensaje
-          </button>
-        </form>
-      </section>
+            <div className="grid grid-cols-1 gap-4">
+              <input
+                type="text"
+                name="nombre"
+                required
+                placeholder="Nombre"
+                className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-[#121212] border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+              />
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-[#121212] border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+              />
+            </div>
+            <textarea
+              name="mensaje"
+              required
+              placeholder="Mensaje..."
+              rows="4"
+              className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all resize-none ${isDark ? 'bg-[#121212] border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+            ></textarea>
+
+            <button
+              type="submit"
+              className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
+            >
+              <FaPaperPlane className="text-xs" /> Enviar mensaje
+            </button>
+          </form>
+        </section>
+      </div>
     </div>
   );
 }
