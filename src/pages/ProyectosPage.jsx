@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaPaperPlane } from "react-icons/fa";
 import { useTheme } from "../hooks/useTheme";
+
 
 export function ProyectosPage() {
   const { theme } = useTheme();
@@ -18,7 +19,7 @@ export function ProyectosPage() {
         "Dashboard administrativo intuitivo",
         "Generación de reportes estadísticos"
       ],
-      github: "#", // Propiedad intelectual
+      github: "#",
       demo: "https://res.cloudinary.com/drr75muur/video/upload/v1758406992/projects/na9iyuegfmroxczdlrnt.mp4",
       type: "video"
     },
@@ -34,7 +35,7 @@ export function ProyectosPage() {
         "API REST completa",
         "Interfaz responsive"
       ],
-      github: " https://github.com/RFGina/Arandu_GestorDeEstudios",
+      github: "https://github.com/RFGina/Arandu_GestorDeEstudios",
       demo: "https://res.cloudinary.com/drr75muur/video/upload/v1759065954/projects/yube0kdysylq90yezm2e.mp4",
       type: "video"
     },
@@ -157,6 +158,63 @@ export function ProyectosPage() {
           ))}
         </div>
       </div>
+      <div className="mb-12 md:mb-16">
+        <h1 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
+          &gt; Escribime
+        </h1>
+        <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'}`}></div>
+
+      </div>
+
+      <section className="grid md:grid-cols-2 gap-8">
+        {/* Lado Izquierdo: Mensaje */}
+        <div className={`p-8 border rounded-lg flex flex-col justify-center ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}>
+          <h3 className={`font-mono text-2xl mb-4 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
+            ¿Tienes un proyecto en mente?
+          </h3>
+          <p className={`font-light ${isDark ? 'text-gray-400' : 'text-[#5d4c3a]'}`}>
+            Estoy disponible para nuevas oportunidades y colaboraciones. Si quieres contactarme de forma directa, puedes enviarme un mensaje a través del formulario.
+          </p>
+        </div>
+
+        {/* Lado Derecho: Formulario */}
+        <form
+          action="https://formspree.io/f/xlgnkkge"
+          method="POST"
+          className={`p-8 border rounded-lg flex flex-col gap-4 ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}
+        >
+          <div className="grid grid-cols-1 gap-4">
+            <input
+              type="text"
+              name="nombre"
+              required
+              placeholder="Nombre"
+              className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+            />
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Email"
+              className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+            />
+          </div>
+          <textarea
+            name="mensaje"
+            required
+            placeholder="Mensaje..."
+            rows="4"
+            className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all resize-none ${isDark ? 'bg-gray-900 border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
+          ></textarea>
+
+          <button
+            type="submit"
+            className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
+          >
+            <FaPaperPlane className="text-xs" /> Enviar mensaje
+          </button>
+        </form>
+      </section>
     </div>
   );
 }

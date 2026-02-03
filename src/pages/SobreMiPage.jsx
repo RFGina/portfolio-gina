@@ -3,6 +3,7 @@ import { useTheme } from "../hooks/useTheme";
 import fondoLight from "../assets/img/fondoClaro2.png";
 import fondoDark from "../assets/img/fondodark2.png";
 
+
 export function SobreMiPage() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -66,7 +67,7 @@ export function SobreMiPage() {
                   <span className={`text-sm transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
                     }`}>Especialidad</span>
                   <p className={`font-mono transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
-                    }`}>Backend Developer</p>
+                    }`}>Análasis Funcional y Desarrollo web</p>
                 </div>
                 <div>
                   <span className={`text-sm transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
