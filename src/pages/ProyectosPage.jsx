@@ -184,6 +184,8 @@ export function ProyectosPage() {
               className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all resize-none ${isDark ? 'bg-[#121212] border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
             ></textarea>
 
+            <input type="hidden" name="_next" value="https://portfoliogeorgina.netlify.app/" />
+
             <button
               type="submit"
               className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
