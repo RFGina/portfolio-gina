@@ -6,6 +6,9 @@ export function ProyectosPage() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
+  // Estados para manejar el envío
+  const [status, setStatus] = useState(""); // "" | "SENDING" | "SUCCESS" | "ERROR"
+
   const [proyectos] = useState([
     {
       id: 1,
@@ -69,10 +72,38 @@ export function ProyectosPage() {
     }
   ]);
 
+  // FUNCIÓN AJAX PARA EL ENVÍO
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("SENDING");
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xlgnkkge", {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setStatus("SUCCESS");
+        form.reset();
+        // Opcional: limpiar el mensaje después de 5 segundos
+        setTimeout(() => setStatus(""), 5000);
+      } else {
+        setStatus("ERROR");
+      }
+    } catch (error) {
+      setStatus("ERROR");
+    }
+  };
+
   return (
     <div id="projects" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'}`}>
-
-      {/* Todo el contenido envuelto en max-w-6xl para que esté alineado */}
       <div className="max-w-6xl mx-auto">
 
         {/* SECCIÓN PROYECTOS */}
@@ -137,7 +168,7 @@ export function ProyectosPage() {
           ))}
         </div>
 
-        {/* SECCIÓN ESCRIBIME (Ahora bien alineada) */}
+        {/* SECCIÓN ESCRIBIME */}
         <div className="mb-12">
           <h2 className={`font-mono text-3xl md:text-4xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'}`}>
             &gt; escribime
@@ -156,8 +187,7 @@ export function ProyectosPage() {
           </div>
 
           <form
-            action="https://formspree.io/f/xlgnkkge"
-            method="POST"
+            onSubmit={handleSubmit}
             className={`p-8 border rounded-lg flex flex-col gap-4 ${isDark ? 'border-gray-800 bg-[#1a1a1a]' : 'border-[#d4c9b8] bg-white'}`}
           >
             <div className="grid grid-cols-1 gap-4">
@@ -184,14 +214,26 @@ export function ProyectosPage() {
               className={`w-full font-mono text-sm border p-4 rounded outline-none transition-all resize-none ${isDark ? 'bg-[#121212] border-gray-700 text-gray-300 focus:border-gray-500' : 'bg-[#f5f1eb] border-[#d4c9b8] text-[#5d4c3a] focus:border-[#8b7355]'}`}
             ></textarea>
 
-            <input type="hidden" name="_next" value="https://portfoliogeorgina.netlify.app/" />
-
             <button
               type="submit"
-              className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
+              disabled={status === "SENDING"}
+              className={`flex items-center justify-center gap-2 px-4 py-4 border font-mono text-sm transition-all uppercase tracking-widest disabled:opacity-50 ${isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'}`}
             >
-              <FaPaperPlane className="text-xs" /> Enviar mensaje
+              <FaPaperPlane className="text-xs" />
+              {status === "SENDING" ? "Enviando..." : "Enviar mensaje"}
             </button>
+
+            {/* MENSAJES DE ESTADO */}
+            {status === "SUCCESS" && (
+              <p className="mt-2 text-green-500 font-mono text-xs animate-pulse text-center italic">
+                ¡Mensaje enviado con éxito! Te responderé pronto.
+              </p>
+            )}
+            {status === "ERROR" && (
+              <p className="mt-2 text-red-500 font-mono text-xs text-center italic">
+                Hubo un error. Por favor, intenta de nuevo.
+              </p>
+            )}
           </form>
         </section>
       </div>
