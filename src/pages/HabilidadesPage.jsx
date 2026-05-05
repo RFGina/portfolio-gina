@@ -11,20 +11,25 @@ export function HabilidadesPage() {
     { id: 2, title: "Django", category: "Backend" },
     { id: 3, title: "Django REST", category: "Backend" },
     { id: 4, title: "FastAPI", category: "Backend" },
+    { id: 5, title: "C#", category: "Backend" },
+    { id: 6, title: 'ASP.NET MVC:', category: "Backend" },
+    { id: 7, title: 'ASP.NET Web Api:', category: "Backend" },
 
     // Databases
-    { id: 5, title: "PostgreSQL", category: "Database" },
-    { id: 6, title: "MySQL", category: "Database" },
-    { id: 7, title: "SQL Avanzado", category: "Database" },
+    { id: 8, title: "PostgreSQL", category: "Database" },
+    { id: 9, title: "MySQL", category: "Database" },
+    { id: 10, title: "SQL Avanzado", category: "Database" },
 
 
     // DevOps / Sistemas
-    { id: 15, title: "Docker", category: "DevOps" },
-    { id: 16, title: "Linux", category: "Sistemas" },
+    { id: 11, title: "Docker", category: "DevOps" },
+    { id: 12, title: "Linux", category: "Sistemas" },
 
     // Herramientas
-    { id: 18, title: "Git", category: "Herramientas" },
-    { id: 19, title: "APIs REST", category: "Backend" },
+    { id: 13, title: "Git", category: "Herramientas" },
+    { id: 14, title: "APIs REST", category: "Backend" },
+
+
   ]);
 
 

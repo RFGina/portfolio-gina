@@ -11,6 +11,18 @@ export function ProyectosPage() {
 
   const [proyectos] = useState([
     {
+      id: 5,
+      title: "Catálogo virtual - emprendimiento Buen Gusto",
+      description: "",
+      technologies: ["C#", "ASP.NET 10", "Entity Framework", "SQLServer",],
+      features: [
+
+      ],
+      link: "#",
+      type: "card"
+    },
+    {
+
       id: 1,
       title: "Sistema de Gestión CEP 62",
       description: "Aplicación web completa para el Instituto Superior CEP 62. Automatiza calificaciones, asistencias y mesas de exámenes.",
@@ -59,17 +71,16 @@ export function ProyectosPage() {
     {
       id: 4,
       title: "ILoveSQL Blog",
-      description: "Blog personal donde documento mi aprendizaje en bases de datos y desarrollo web. Incluye una API en Django para gestionar artículos y un frontend en React.",
+      description: "Blog personal donde documento mi aprendizaje en bases de datos y desarrollo web. Incluye una API en Django para gestionar mis notas y un frontend en React.",
       technologies: ["Python", "Django", "Django REST Framework", "SQLite", "React"],
       features: [
         "API REST",
-        "CRUD de artículos",
-        "Autenticación de usuarios",
         "Frontend desacoplado"
       ],
       link: "https://ilovesql.netlify.app/",
       type: "card"
     }
+
   ]);
 
   // FUNCIÓN AJAX PARA EL ENVÍO
