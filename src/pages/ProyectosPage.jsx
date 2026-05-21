@@ -41,7 +41,7 @@ export function ProyectosPage() {
         "Generación de reportes estadísticos"
       ],
       github: "#",
-      demo: "https://player.cloudinary.com/embed/?cloud_name=dum9vgedq&public_id=cep42_cksguw",
+      demo: "https://res.cloudinary.com/dum9vgedq/video/upload/cep42_cksguw.mp4",
       type: "video"
     },
     {
