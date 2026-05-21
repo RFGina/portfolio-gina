@@ -172,7 +172,7 @@ export function ProyectosPage() {
               <div className="p-6 flex gap-4">
                 {proyecto.link && (
                   <a href={proyecto.link} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-2 px-4 py-2 border font-mono text-sm ${isDark ? 'border-green-600 text-green-400 hover:bg-green-800 hover:text-white' : 'border-green-700 text-green-700 hover:bg-green-700 hover:text-white'}`}>
-                    Ver demo
+                    Echar un vistazo
                   </a>
                 )}
                 {proyecto.github && proyecto.github !== "#" && (
