@@ -11,19 +11,26 @@ export function ProyectosPage() {
 
   const [proyectos] = useState([
     {
-      id: 5,
+      id: 1,
       title: "Catálogo virtual - emprendimiento Buen Gusto",
-      description: "",
+      description: "Aplicación web, el cliente ve un catálogo virtual, el usuario empleado puede realizar operaciones crud de productos.",
       technologies: ["C#", "ASP.NET 10", "Entity Framework", "SQLServer",],
-      features: [
 
+      features: [
+        "Panel de administración con CRUD completo para la gestión eficiente de categorías y productos.",
+        "Catálogo virtual interactivo optimizado para la visualización fluida de clientes.",
+        "Arquitectura limpia con separación de responsabilidades para garantizar la escalabilidad del sistema.",
+        "Conexión segura y optimizada a base de datos relacional mediante Entity Framework Core.",
+        "Despliegue automatizado y hosting activo en la nube (Railway)."
       ],
-      link: "#",
+
+
+      link: "https://buengusto-production.up.railway.app/",
       type: "card"
     },
     {
 
-      id: 1,
+      id: 2,
       title: "Sistema de Gestión CEP 62",
       description: "Aplicación web completa para el Instituto Superior CEP 62. Automatiza calificaciones, asistencias y mesas de exámenes.",
       technologies: ["Django", "Python", "PostgreSQL", "JavaScript", "Tailwind"],
@@ -34,11 +41,11 @@ export function ProyectosPage() {
         "Generación de reportes estadísticos"
       ],
       github: "#",
-      demo: "https://res.cloudinary.com/drr75muur/video/upload/v1758406992/projects/na9iyuegfmroxczdlrnt.mp4",
+      demo: "https://player.cloudinary.com/embed/?cloud_name=dum9vgedq&public_id=cep42_cksguw",
       type: "video"
     },
     {
-      id: 2,
+      id: 3,
       title: "FlashCard app Arandú",
       description: "Aplicación full-stack para gestión de estudios con flashcards. Backend en Django REST Framework y frontend en React.",
       technologies: ["Django REST", "React", "Python", "SQLite", "Chakra UI"],
@@ -50,11 +57,10 @@ export function ProyectosPage() {
         "Interfaz responsive"
       ],
       github: "https://github.com/RFGina/Arandu_GestorDeEstudios",
-      demo: "https://res.cloudinary.com/drr75muur/video/upload/v1759065954/projects/yube0kdysylq90yezm2e.mp4",
-      type: "video"
+      type: "card"
     },
     {
-      id: 3,
+      id: 4,
       title: "Veturn Backend",
       description: "Backend RESTful para gestión de veterinarias, tutores, mascotas, profesionales y turnos. Desarrollado con FastAPI y SQLAlchemy.",
       technologies: ["FastAPI", "Python", "SQLAlchemy", "SQLite", "Bcrypt"],
@@ -69,7 +75,7 @@ export function ProyectosPage() {
       type: "card"
     },
     {
-      id: 4,
+      id: 5,
       title: "ILoveSQL Blog",
       description: "Blog personal donde documento mi aprendizaje en bases de datos y desarrollo web. Incluye una API en Django para gestionar mis notas y un frontend en React.",
       technologies: ["Python", "Django", "Django REST Framework", "SQLite", "React"],
