@@ -25,7 +25,7 @@ export function ProyectosPage() {
       ],
 
 
-      link: "https://buengusto-production.up.railway.app/",
+      link: "https://buen-gusto.onrender.com/",
       type: "card"
     },
     {
