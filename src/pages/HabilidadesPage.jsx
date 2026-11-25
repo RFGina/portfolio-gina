@@ -1,4 +1,6 @@
-export function HabilidadesPage() {
+import { useTheme } from "../hooks/useTheme";
+
+function HabilidadesPage() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
