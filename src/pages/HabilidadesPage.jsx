@@ -1,77 +1,150 @@
-import React, { useState } from "react";
 import { useTheme } from "../hooks/useTheme";
+
+const SKILL_GROUPS = [
+  {
+    id: "backend",
+    category: "Backend",
+    description: "Desarrollo de lógica de negocio, APIs y arquitectura del lado del servidor.",
+    items: [
+      "Python",
+      "Django",
+      "Django REST",
+      "FastAPI",
+      "C#",
+      "ASP.NET MVC",
+      "ASP.NET Web API",
+      "APIs REST",
+    ],
+  },
+  {
+    id: "analisis",
+    category: "Análisis Funcional & Sistemas",
+    description: "Diseño, documentación y modelado previo a la implementación.",
+    items: [
+      "Relevamiento de información",
+      "Análisis de requerimientos",
+      "Modelado de datos (DER)",
+      "Diagramas UML",
+      "Flujos de datos y procesos",
+      "Historias de usuario",
+    ],
+  },
+  {
+    id: "database",
+    category: "Bases de Datos",
+    description: "Diseño relacional, consultas complejas y administración de datos.",
+    items: [
+      "SQL Server",
+      "PostgreSQL",
+      "MySQL",
+      "SQL Avanzado",
+      "Entity Framework Core",
+    ],
+  },
+  {
+    id: "devops-tools",
+    category: "DevOps & Herramientas",
+    description: "Entornos, despliegue, control de versiones y sistemas operativos.",
+    items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Linux",
+      "Postman",
+    ],
+  },
+];
 
 export function HabilidadesPage() {
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
-  const [skills] = useState([
-    // Backend
-    { id: 1, title: "Python", category: "Backend" },
-    { id: 2, title: "Django", category: "Backend" },
-    { id: 3, title: "Django REST", category: "Backend" },
-    { id: 4, title: "FastAPI", category: "Backend" },
-    { id: 5, title: "C#", category: "Backend" },
-    { id: 6, title: 'ASP.NET MVC:', category: "Backend" },
-    { id: 7, title: 'ASP.NET Web Api:', category: "Backend" },
-
-    // Databases
-    { id: 8, title: "PostgreSQL", category: "Database" },
-    { id: 9, title: "MySQL", category: "Database" },
-    { id: 10, title: "SQL Avanzado", category: "Database" },
-
-
-    // DevOps / Sistemas
-    { id: 11, title: "Docker", category: "DevOps" },
-    { id: 12, title: "Linux", category: "Sistemas" },
-
-    // Herramientas
-    { id: 13, title: "Git", category: "Herramientas" },
-    { id: 14, title: "APIs REST", category: "Backend" },
-
-
-  ]);
-
+  const isDark = theme === "dark";
 
   return (
-    <div id="skills" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'
-      }`}>
-      <div className="max-w-6xl mx-auto">
-
+    <div
+      id="skills"
+      className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${
+        isDark ? "bg-[#121212]" : "bg-[#f5f1eb]"
+      }`}
+    >
+      <div className="w-full">
         {/* Título minimalista */}
         <div className="mb-12 md:mb-16">
-          <h1 className={`font-mono text-2xl md:text-3xl mb-4 transition-colors duration-300 ${isDark ? 'text-gray-300' : 'text-[#8b7355]'
-            }`}>
+          <h1
+            className={`font-mono text-2xl md:text-3xl mb-4 transition-colors duration-300 ${
+              isDark ? "text-gray-300" : "text-[#8b7355]"
+            }`}
+          >
             &gt; habilidades
           </h1>
-          <div className={`h-px w-24 mb-6 transition-colors duration-300 ${isDark ? 'bg-gray-700' : 'bg-[#d4c9b8]'
-            }`}></div>
-          <p className={`font-light max-w-3xl transition-colors duration-300 ${isDark ? 'text-gray-400' : 'text-[#a0907a]'
-            }`}>
-            Tecnologías y herramientas que utilizo para desarrollar sistemas backend.
+          <div
+            className={`h-px w-24 mb-6 transition-colors duration-300 ${
+              isDark ? "bg-gray-700" : "bg-[#d4c9b8]"
+            }`}
+          ></div>
+          <p
+            className={`font-light transition-colors duration-300 ${
+              isDark ? "text-gray-400" : "text-[#a0907a]"
+            }`}
+          >
+            Stack tecnológico, herramientas y metodologías de análisis que aplico en el desarrollo de software.
           </p>
         </div>
 
-        {/* Grid de habilidades */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {skills.map((skill) => (
+        {/* Grid de tarjetas agrupadas por categoría */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {SKILL_GROUPS.map((group) => (
             <div
-              key={skill.id}
-              className={`p-4 border transition-all duration-300 group ${isDark
-                ? 'border-gray-800 bg-[#1a1a1a] hover:border-gray-600'
-                : 'border-[#d4c9b8] bg-white hover:border-[#8b7355]'
-                }`}
+              key={group.id}
+              className={`p-6 border transition-all duration-300 flex flex-col justify-between ${
+                isDark
+                  ? "border-gray-800 bg-[#1a1a1a] hover:border-gray-600"
+                  : "border-[#d4c9b8] bg-white hover:border-[#8b7355]"
+              }`}
             >
-              <h3 className={`font-mono text-lg mb-2 transition-colors duration-300 ${isDark
-                ? 'text-gray-300 group-hover:text-white'
-                : 'text-[#8b7355] group-hover:text-[#5d4c3a]'
-                }`}>
-                {skill.title}
-              </h3>
-              <span className={`text-xs font-light transition-colors duration-300 ${isDark ? 'text-gray-500' : 'text-[#a0907a]'
-                }`}>
-                {skill.category}
-              </span>
+              <div>
+                {/* Encabezado de la tarjeta */}
+                <div className="flex items-center justify-between mb-2">
+                  <h2
+                    className={`font-mono text-lg md:text-xl transition-colors duration-300 ${
+                      isDark ? "text-gray-200" : "text-[#8b7355]"
+                    }`}
+                  >
+                    {group.category}
+                  </h2>
+                  <span
+                    className={`font-mono text-xs ${
+                      isDark ? "text-gray-600" : "text-[#c4b5a0]"
+                    }`}
+                  >
+                    [{group.items.length}]
+                  </span>
+                </div>
+
+                {/* Descripción breve */}
+                <p
+                  className={`text-sm font-light mb-5 transition-colors duration-300 ${
+                    isDark ? "text-gray-400" : "text-[#a0907a]"
+                  }`}
+                >
+                  {group.description}
+                </p>
+              </div>
+
+              {/* Lista de habilidades en formato etiquetas (badges) */}
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className={`px-3 py-1.5 text-xs font-mono border transition-colors duration-200 ${
+                      isDark
+                        ? "border-gray-700 bg-[#121212] text-gray-300 hover:border-gray-500 hover:text-white"
+                        : "border-[#e6dfd3] bg-[#faf8f5] text-[#6e5a41] hover:border-[#8b7355] hover:text-[#4a3c2b]"
+                    }`}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -83,10 +156,11 @@ export function HabilidadesPage() {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 px-6 py-3 border font-mono text-sm 
-                     hover:bg-opacity-90 transition-all duration-300 ${isDark
-                ? 'border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800 hover:text-white'
-                : 'border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white'
-              }`}
+                     hover:bg-opacity-90 transition-all duration-300 ${
+                       isDark
+                         ? "border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-gray-800 hover:text-white"
+                         : "border-[#8b7355] text-[#8b7355] hover:bg-[#8b7355] hover:text-white"
+                     }`}
           >
             <span>ver_repositorios()</span>
             <span className="text-lg">→</span>

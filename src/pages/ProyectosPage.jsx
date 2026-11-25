@@ -121,7 +121,7 @@ export function ProyectosPage() {
 
   return (
     <div id="projects" className={`min-h-screen px-4 md:px-8 py-12 md:py-20 transition-colors duration-300 ${isDark ? 'bg-[#121212]' : 'bg-[#f5f1eb]'}`}>
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
 
         {/* SECCIÓN PROYECTOS */}
         <div className="mb-12 md:mb-16">
