@@ -25,8 +25,9 @@ export function ProyectosPage() {
       ],
 
 
-      link: "https://buen-gusto.onrender.com/",
-      type: "card"
+      link: "",
+      demo:"",
+      type: "video"
     },
     {
 
@@ -42,7 +43,7 @@ export function ProyectosPage() {
       ],
       github: "#",
       demo: "https://res.cloudinary.com/dum9vgedq/video/upload/cep42_cksguw.mp4",
-      type: "video"
+      type: "https://buen-gusto.onrender.com/"
     },
     {
       id: 3,
