@@ -13,7 +13,7 @@ export function SobreMiPage() {
         isDark ? "bg-[#121212]" : "bg-[#f5f1eb]"
       }`}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="w-full">
         {/* Encabezado */}
         <div className="mb-12">
           <h1

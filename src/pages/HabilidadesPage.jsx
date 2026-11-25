@@ -1,61 +1,3 @@
-import React from "react";
-import { useTheme } from "../hooks/useTheme";
-
-const SKILL_GROUPS = [
-  {
-    id: "backend",
-    category: "Backend",
-    description: "Desarrollo de lógica de negocio, APIs y arquitectura del lado del servidor.",
-    items: [
-      "Python",
-      "Django",
-      "Django REST",
-      "FastAPI",
-      "C#",
-      "ASP.NET MVC",
-      "ASP.NET Web API",
-      "APIs REST",
-    ],
-  },
-  {
-    id: "analisis",
-    category: "Análisis Funcional & Sistemas",
-    description: "Diseño, documentación y modelado previo a la implementación.",
-    items: [
-      "Relevamiento de información",
-      "Análisis de requerimientos",
-      "Modelado de datos (DER)",
-      "Diagramas UML",
-      "Flujos de datos y procesos",
-      "Historias de usuario",
-    ],
-  },
-  {
-    id: "database",
-    category: "Bases de Datos",
-    description: "Diseño relacional, consultas complejas y administración de datos.",
-    items: [
-      "SQL Server",
-      "PostgreSQL",
-      "MySQL",
-      "SQL Avanzado",
-      "Entity Framework Core",
-    ],
-  },
-  {
-    id: "devops-tools",
-    category: "DevOps & Herramientas",
-    description: "Entornos, despliegue, control de versiones y sistemas operativos.",
-    items: [
-      "Git",
-      "GitHub",
-      "Docker",
-      "Linux",
-      "Postman",
-    ],
-  },
-];
-
 export function HabilidadesPage() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -67,7 +9,7 @@ export function HabilidadesPage() {
         isDark ? "bg-[#121212]" : "bg-[#f5f1eb]"
       }`}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
         {/* Título minimalista */}
         <div className="mb-12 md:mb-16">
           <h1
@@ -83,7 +25,7 @@ export function HabilidadesPage() {
             }`}
           ></div>
           <p
-            className={`font-light max-w-3xl transition-colors duration-300 ${
+            className={`font-light transition-colors duration-300 ${
               isDark ? "text-gray-400" : "text-[#a0907a]"
             }`}
           >
